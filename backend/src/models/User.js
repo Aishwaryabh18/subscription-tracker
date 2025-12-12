@@ -1,19 +1,15 @@
-// models/User.js
 // Defines the structure of User data in MongoDB
 
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-/**
- * User Schema - defines what fields a user has
- * Schema = blueprint for documents in the collection
- */
+// User Schema - defines what fields a user has
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please provide a name"], // Validation: name is mandatory
-      trim: true, // Remove whitespace from both ends
+      required: [true, "Please provide a name"],
+      trim: true,
       maxlength: [50, "Name cannot exceed 50 characters"],
     },
 
@@ -21,10 +17,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please provide an email"],
       unique: true, // No two users can have same email (creates index in DB)
-      lowercase: true, // Convert to lowercase (john@MAIL.com → john@mail.com)
+      lowercase: true,
       trim: true,
       match: [
-        // Regex to validate email format
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
         "Please provide a valid email",
       ],
@@ -37,7 +32,6 @@ const userSchema = new mongoose.Schema(
       select: false, // Don't return password in queries by default (security!)
     },
 
-    // User preferences
     preferences: {
       currency: {
         type: String,
@@ -52,7 +46,7 @@ const userSchema = new mongoose.Schema(
       },
       emailNotifications: {
         type: Boolean,
-        default: true, // Email notifications enabled by default
+        default: true,
       },
     },
 

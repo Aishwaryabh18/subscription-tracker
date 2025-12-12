@@ -1,4 +1,3 @@
-// middleware/auth.js
 // Protects routes - only authenticated users can access
 
 const jwt = require("jsonwebtoken");
@@ -21,13 +20,11 @@ const protect = async (req, res, next) => {
   let token;
 
   try {
-    // Check if Authorization header exists and starts with "Bearer"
     // Format: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
     ) {
-      // Extract token (remove "Bearer " prefix)
       // Split by space: ["Bearer", "actual_token"]
       token = req.headers.authorization.split(" ")[1];
     }

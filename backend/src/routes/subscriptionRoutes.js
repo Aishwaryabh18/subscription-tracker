@@ -1,10 +1,5 @@
-// routes/subscriptionRoutes.js
-// Defines API endpoints for subscriptions
-
 const express = require("express");
 const router = express.Router();
-
-// Import controllers
 const {
   getAllSubscriptions,
   getSubscriptionById,
@@ -13,8 +8,6 @@ const {
   deleteSubscription,
   getSubscriptionStats,
 } = require("../controllers/subscriptionController");
-
-// Import middleware
 const { protect } = require("../middleware/auth");
 const {
   validateSubscription,
