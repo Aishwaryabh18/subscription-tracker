@@ -15,6 +15,13 @@
 // Ex:
 // const user: User = { name: 'John', emal: 'john@example.com' };
 // Error: Property 'emal' does not exist. Did you mean 'email'?
+// types/index.ts
+// TypeScript type definitions for the application
+
+/**
+ * User type definition
+ * Represents a user in the system
+ */
 export interface User {
   _id: string;
   name: string;
@@ -142,7 +149,7 @@ export interface StatsResponse {
 }
 
 /**
- * Form data types
+ * Form data types - Used in Login/Signup forms
  */
 export interface RegisterFormData {
   name: string;
@@ -156,6 +163,9 @@ export interface LoginFormData {
   password: string;
 }
 
+/**
+ * Subscription form data - Used in Add/Edit subscription forms
+ */
 export interface SubscriptionFormData {
   name: string;
   description?: string;
@@ -180,4 +190,11 @@ export interface SubscriptionQueryParams {
   status?: "active" | "cancelled" | "paused";
   category?: string;
   sort?: "cost-high" | "cost-low" | "date-newest" | "date-oldest";
+}
+
+/**
+ * Form error types
+ */
+export interface FormErrors {
+  [key: string]: string;
 }

@@ -3,7 +3,7 @@
 
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import Cookies from "js-cookie";
-import {
+import type {
   AuthResponse,
   UserResponse,
   SubscriptionsResponse,

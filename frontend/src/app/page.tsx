@@ -1,147 +1,232 @@
 // app/page.tsx
-// Home page - Landing page for the application
+// Home page with Material-UI
 
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import styles from "./page.module.css";
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  CircularProgress,
+} from "@mui/material";
+import {
+  Schedule as ScheduleIcon,
+  BarChart as BarChartIcon,
+  Lock as LockIcon,
+} from "@mui/icons-material";
 
 export default function Home() {
   const { isAuthenticated, loading } = useAuth();
   const router = useRouter();
 
-  // Redirect to dashboard if already logged in
   useEffect(() => {
     if (!loading && isAuthenticated) {
       router.push("/dashboard");
     }
   }, [isAuthenticated, loading, router]);
 
-  // Show loading state while checking authentication
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <div className={styles.spinner}></div>
-      </div>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
     );
   }
 
   return (
-    <main className={styles.hero}>
-      {/* Hero Section */}
-      <div className={styles.container}>
-        <div className={styles.center}>
-          {/* Header */}
-          <h1 className={styles.title}>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        py: 8,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box sx={{ textAlign: "center", color: "white", mb: 8 }}>
+          <Typography variant="h1" sx={{ mb: 2, fontWeight: 700 }}>
             Track Your Subscriptions
-            <span className={styles.highlight}>
-              Save Money. Stay Organized.
-            </span>
-          </h1>
-
-          <p className={styles.description}>
+          </Typography>
+          <Typography variant="h4" sx={{ mb: 1, color: "#ffd700" }}>
+            Save Money. Stay Organized.
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ mb: 6, opacity: 0.95, maxWidth: 700, mx: "auto" }}
+          >
             Never miss a renewal date again. Manage all your subscriptions in
             one place and get reminders before you're charged.
-          </p>
+          </Typography>
 
-          {/* CTA Buttons */}
-          <div className={styles.ctaGroup}>
-            <Link
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Button
+              component={Link}
               href="/signup"
-              className={`${styles.button} ${styles.primaryButton}`}
+              variant="contained"
+              size="large"
+              sx={{
+                bgcolor: "white",
+                color: "primary.main",
+                px: 4,
+                py: 1.5,
+                fontSize: "1.1rem",
+                "&:hover": {
+                  bgcolor: "rgba(255,255,255,0.9)",
+                },
+              }}
             >
               Get Started Free
-            </Link>
-            <Link
+            </Button>
+            <Button
+              component={Link}
               href="/login"
-              className={`${styles.button} ${styles.secondaryButton}`}
+              variant="outlined"
+              size="large"
+              sx={{
+                borderColor: "white",
+                color: "white",
+                px: 4,
+                py: 1.5,
+                fontSize: "1.1rem",
+                "&:hover": {
+                  borderColor: "white",
+                  bgcolor: "rgba(255,255,255,0.1)",
+                },
+              }}
             >
               Sign In
-            </Link>
-          </div>
+            </Button>
+          </Box>
+        </Box>
 
-          {/* Features Grid */}
-          <div className={styles.featuresGrid}>
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <svg
-                  className={styles.icon}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={4}>
+            <Card
+              sx={{
+                height: "100%",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "translateY(-8px)" },
+              }}
+            >
+              <CardContent sx={{ textAlign: "center", p: 4 }}>
+                <Box
+                  sx={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: "50%",
+                    bgcolor: "primary.light",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mx: "auto",
+                    mb: 2,
+                  }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className={styles.featureTitle}>
-                Smart Reminders
-              </h3>
-              <p className={styles.featureText}>
-                Get notified before renewal dates so you're never caught off
-                guard by unexpected charges.
-              </p>
-            </div>
+                  <ScheduleIcon sx={{ fontSize: 40, color: "primary.main" }} />
+                </Box>
+                <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
+                  Smart Reminders
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  Get notified before renewal dates so you're never caught off
+                  guard by unexpected charges.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
 
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <svg
-                  className={styles.icon}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+          <Grid item xs={12} md={4}>
+            <Card
+              sx={{
+                height: "100%",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "translateY(-8px)" },
+              }}
+            >
+              <CardContent sx={{ textAlign: "center", p: 4 }}>
+                <Box
+                  sx={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: "50%",
+                    bgcolor: "primary.light",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mx: "auto",
+                    mb: 2,
+                  }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
-              </div>
-              <h3 className={styles.featureTitle}>
-                Analytics
-              </h3>
-              <p className={styles.featureText}>
-                See exactly how much you're spending monthly and yearly with
-                detailed breakdowns.
-              </p>
-            </div>
+                  <BarChartIcon sx={{ fontSize: 40, color: "primary.main" }} />
+                </Box>
+                <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
+                  Analytics
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  See exactly how much you're spending monthly and yearly with
+                  detailed breakdowns.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
 
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <svg
-                  className={styles.icon}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+          <Grid item xs={12} md={4}>
+            <Card
+              sx={{
+                height: "100%",
+                transition: "transform 0.3s",
+                "&:hover": { transform: "translateY(-8px)" },
+              }}
+            >
+              <CardContent sx={{ textAlign: "center", p: 4 }}>
+                <Box
+                  sx={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: "50%",
+                    bgcolor: "primary.light",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mx: "auto",
+                    mb: 2,
+                  }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
-              </div>
-              <h3 className={styles.featureTitle}>
-                Secure & Private
-              </h3>
-              <p className={styles.featureText}>
-                Your data is encrypted and secure. We never share your
-                information with third parties.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+                  <LockIcon sx={{ fontSize: 40, color: "primary.main" }} />
+                </Box>
+                <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
+                  Secure & Private
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  Your data is encrypted and secure. We never share your
+                  information with third parties.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 }
