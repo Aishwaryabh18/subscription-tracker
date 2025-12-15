@@ -268,7 +268,7 @@ export default function SubscriptionsPage() {
                           color="primary"
                           className="font-bold"
                         >
-                          ${sub.cost}
+                          ₹{sub.cost}
                         </Typography>
                       </Box>
 

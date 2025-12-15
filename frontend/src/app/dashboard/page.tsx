@@ -144,7 +144,7 @@ export default function DashboardPage() {
                       Monthly Total
                     </Typography>
                     <Typography variant="h4" className="font-bold mt-2">
-                      ${stats?.totalMonthly || "0.00"}
+                      ₹{stats?.totalMonthly || "0.00"}
                     </Typography>
                   </Box>
                   <MoneyIcon className="text-5xl opacity-80" />
@@ -162,7 +162,7 @@ export default function DashboardPage() {
                       Yearly Total
                     </Typography>
                     <Typography variant="h4" className="font-bold mt-2">
-                      ${stats?.totalYearly || "0.00"}
+                      ₹{stats?.totalYearly || "0.00"}
                     </Typography>
                   </Box>
                   <TrendingUpIcon className="text-5xl opacity-80" />
@@ -206,7 +206,7 @@ export default function DashboardPage() {
                         cx="50%"
                         cy="50%"
                         labelLine={false}
-                        label={(entry) => `$${entry.value.toFixed(2)}`}
+                        label={(entry) => `₹${entry.value.toFixed(2)}`}
                         outerRadius={100}
                         fill="#8884d8"
                         dataKey="value"
@@ -252,7 +252,7 @@ export default function DashboardPage() {
                             {renewal.name}
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
-                            ${renewal.cost} •{" "}
+                            ₹{renewal.cost} •{" "}
                             {new Date(
                               renewal.nextBillingDate
                             ).toLocaleDateString()}
@@ -320,7 +320,7 @@ export default function DashboardPage() {
                                 color="primary"
                                 className="font-bold"
                               >
-                                ${sub.cost}
+                                ₹{sub.cost}
                               </Typography>
                               <Chip
                                 label={sub.billingCycle}
