@@ -130,7 +130,6 @@ const createSubscription = async (req, res) => {
       name,
       description,
       cost,
-      currency,
       billingCycle,
       startDate,
       nextBillingDate,
@@ -148,6 +147,7 @@ const createSubscription = async (req, res) => {
       user: req.user._id, // Associate with current user
       name,
       cost,
+      currency: "INR", // Force INR
       billingCycle,
       category,
       nextBillingDate,
@@ -155,7 +155,6 @@ const createSubscription = async (req, res) => {
 
     // Add optional fields if provided
     if (description) subscriptionData.description = description;
-    if (currency) subscriptionData.currency = currency;
     if (startDate) subscriptionData.startDate = startDate;
     if (paymentMethod) subscriptionData.paymentMethod = paymentMethod;
     if (website) subscriptionData.website = website;
@@ -212,14 +211,12 @@ const updateSubscription = async (req, res) => {
     // Update subscription
     // { new: true } returns updated document
     // { runValidators: true } runs schema validations on update
-    subscription = await Subscription.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const updateData = { ...req.body, currency: "INR" };
+
+    subscription = await Subscription.findByIdAndUpdate(req.params.id, updateData, {
+      new: true,
+      runValidators: true,
+    });
 
     res.status(200).json({
       success: true,

@@ -214,7 +214,7 @@ export default function EditSubscriptionPage() {
                     required
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
+                        <InputAdornment position="start">₹</InputAdornment>
                       ),
                     }}
                   />
@@ -226,15 +226,10 @@ export default function EditSubscriptionPage() {
                     select
                     label="Currency"
                     name="currency"
-                    value={formData.currency || "USD"}
+                    value={formData.currency || "INR"}
                     onChange={handleChange}
                   >
-                    <MenuItem value="USD">USD</MenuItem>
-                    <MenuItem value="EUR">EUR</MenuItem>
-                    <MenuItem value="GBP">GBP</MenuItem>
                     <MenuItem value="INR">INR</MenuItem>
-                    <MenuItem value="CAD">CAD</MenuItem>
-                    <MenuItem value="AUD">AUD</MenuItem>
                   </TextField>
                 </Grid>
 

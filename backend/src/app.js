@@ -20,17 +20,17 @@ app.use(
 );
 
 // Routes
-app.get("/", (req, res) => {
-  res.json({
-    message: "Subscription Tracker API",
-    version: "1.0.0",
-    status: "running",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "Subscription Tracker API",
+//     version: "1.0.0",
+//     status: "running",
+//   });
+// });
 
-app.get("/health", (req, res) => {
-  res.json({ status: "OK", timestamp: new Date().toISOString() });
-});
+// app.get("/health", (req, res) => {
+//   res.json({ status: "OK", timestamp: new Date().toISOString() });
+// });
 
 // Mount other routes
 app.use("/api/auth", authRoutes);

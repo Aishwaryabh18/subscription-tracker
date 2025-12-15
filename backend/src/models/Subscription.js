@@ -62,9 +62,8 @@ const subscriptionSchema = new mongoose.Schema(
 
     currency: {
       type: String,
-      default: "USD",
-      enum: ["USD", "EUR", "GBP", "INR", "CAD", "AUD"],
-      // enum = only these values allowed
+      default: "INR",
+      enum: ["INR"], // Force INR as the only supported currency
     },
 
     // ============================================

@@ -59,7 +59,7 @@ export default function AddSubscriptionPage() {
     name: "",
     description: "",
     cost: 0,
-    currency: "USD",
+  currency: "INR",
     billingCycle: "monthly",
     nextBillingDate: "",
     category: "Entertainment",
@@ -177,7 +177,7 @@ export default function AddSubscriptionPage() {
                     required
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
+                        <InputAdornment position="start">₹</InputAdornment>
                       ),
                     }}
                   />
@@ -192,12 +192,7 @@ export default function AddSubscriptionPage() {
                     value={formData.currency}
                     onChange={handleChange}
                   >
-                    <MenuItem value="USD">USD</MenuItem>
-                    <MenuItem value="EUR">EUR</MenuItem>
-                    <MenuItem value="GBP">GBP</MenuItem>
                     <MenuItem value="INR">INR</MenuItem>
-                    <MenuItem value="CAD">CAD</MenuItem>
-                    <MenuItem value="AUD">AUD</MenuItem>
                   </TextField>
                 </Grid>
 

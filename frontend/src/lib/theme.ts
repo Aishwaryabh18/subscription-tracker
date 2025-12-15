@@ -12,32 +12,28 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#667eea",
-      light: "#8b9ff5",
-      dark: "#4c5fd5",
-      contrastText: "#ffffff",
+      main: "#ff6b00", // vivid orange
+      light: "#ff944d",
+      dark: "#c74f00",
+      contrastText: "#0b0d11",
     },
     secondary: {
-      main: "#764ba2",
-      light: "#9a6fc4",
-      dark: "#5a3880",
-      contrastText: "#ffffff",
+      main: "#111827", // near-black
+      light: "#1f2937",
+      dark: "#0b0f17",
+      contrastText: "#f5f7fb",
     },
-    error: {
-      main: "#f44336",
-    },
-    warning: {
-      main: "#ff9800",
-    },
-    info: {
-      main: "#2196f3",
-    },
-    success: {
-      main: "#4caf50",
-    },
+    error: { main: "#ef4444" },
+    warning: { main: "#f59e0b" },
+    info: { main: "#2563eb" },
+    success: { main: "#22c55e" },
     background: {
-      default: "#f5f5f5",
-      paper: "#ffffff",
+      default: "#0f1115", // dark grey background
+      paper: "#111827", // card surface
+    },
+    text: {
+      primary: "#f8fafc",
+      secondary: "#cbd5e1",
     },
   },
   typography: {

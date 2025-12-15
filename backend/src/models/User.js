@@ -35,8 +35,8 @@ const userSchema = new mongoose.Schema(
     preferences: {
       currency: {
         type: String,
-        default: "USD",
-        enum: ["USD", "EUR", "GBP", "INR", "CAD", "AUD"], // Only these values allowed
+        default: "INR",
+        enum: ["INR"], // Force INR preference
       },
       reminderDays: {
         type: Number,

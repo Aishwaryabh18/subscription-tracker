@@ -66,7 +66,7 @@ export default function ProfilePage() {
   const [profileData, setProfileData] = useState<ProfileFormData>({
     name: "",
     email: "",
-    currency: "USD",
+    currency: "INR",
     reminderDays: 3,
     emailNotifications: true,
   });
@@ -417,12 +417,7 @@ export default function ProfilePage() {
                           ),
                         }}
                       >
-                        <MenuItem value="USD">USD - US Dollar</MenuItem>
-                        <MenuItem value="EUR">EUR - Euro</MenuItem>
-                        <MenuItem value="GBP">GBP - British Pound</MenuItem>
                         <MenuItem value="INR">INR - Indian Rupee</MenuItem>
-                        <MenuItem value="CAD">CAD - Canadian Dollar</MenuItem>
-                        <MenuItem value="AUD">AUD - Australian Dollar</MenuItem>
                       </TextField>
                     </Grid>
 

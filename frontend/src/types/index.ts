@@ -27,7 +27,7 @@ export interface User {
   name: string;
   email: string;
   preferences: {
-    currency: "USD" | "EUR" | "GBP" | "INR" | "CAD" | "AUD";
+    currency: "INR";
     reminderDays: number;
     emailNotifications: boolean;
   };
@@ -45,7 +45,7 @@ export interface Subscription {
   name: string;
   description?: string;
   cost: number;
-  currency: "USD" | "EUR" | "GBP" | "INR" | "CAD" | "AUD";
+  currency: "INR";
   billingCycle: "weekly" | "monthly" | "quarterly" | "yearly";
   startDate: string;
   nextBillingDate: string;
@@ -170,7 +170,7 @@ export interface SubscriptionFormData {
   name: string;
   description?: string;
   cost: number;
-  currency?: string;
+  currency?: "INR";
   billingCycle: "weekly" | "monthly" | "quarterly" | "yearly";
   startDate?: string;
   nextBillingDate: string;
