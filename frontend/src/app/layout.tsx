@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { Toaster } from "react-hot-toast";
+import ThemeRegistry from "@/components/ThemeRegistry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,34 +22,36 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AuthProvider>
-          {children}
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 3000,
-              style: {
-                background: "#363636",
-                color: "#fff",
-              },
-              success: {
+      <body className={`${inter.className} theme-root`}>
+        <ThemeRegistry>
+          <AuthProvider>
+            {children}
+            <Toaster
+              position="top-right"
+              toastOptions={{
                 duration: 3000,
-                iconTheme: {
-                  primary: "#10b981",
-                  secondary: "#fff",
+                style: {
+                  background: "var(--panel-bg)",
+                  color: "var(--text)",
                 },
-              },
-              error: {
-                duration: 4000,
-                iconTheme: {
-                  primary: "#ef4444",
-                  secondary: "#fff",
+                success: {
+                  duration: 3000,
+                  iconTheme: {
+                    primary: "var(--orange-500)",
+                    secondary: "var(--grey-900)",
+                  },
                 },
-              },
-            }}
-          />
-        </AuthProvider>
+                error: {
+                  duration: 4000,
+                  iconTheme: {
+                    primary: "var(--danger)",
+                    secondary: "var(--grey-900)",
+                  },
+                },
+              }}
+            />
+          </AuthProvider>
+        </ThemeRegistry>
       </body>
     </html>
   );

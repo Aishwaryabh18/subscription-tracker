@@ -12,10 +12,10 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#ff6b00", // vivid orange
+      main: "#F56E0F", // vivid orange
       light: "#ff944d",
       dark: "#c74f00",
-      contrastText: "#0b0d11",
+      contrastText: "#fbfbfb",
     },
     secondary: {
       main: "#111827", // near-black
@@ -28,8 +28,8 @@ const theme = createTheme({
     info: { main: "#2563eb" },
     success: { main: "#22c55e" },
     background: {
-      default: "#0f1115", // dark grey background
-      paper: "#111827", // card surface
+      default: "#100c0b", // dark grey background
+      paper: "#262626", // card surface
     },
     text: {
       primary: "#f8fafc",

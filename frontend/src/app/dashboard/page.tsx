@@ -36,13 +36,23 @@ import {
   Tooltip,
 } from "recharts";
 
+// const COLORS = [
+//   "#FF8A3D", // Accent orange (use for primary / selected slice)
+//   "#1F2937", // Deep charcoal
+//   "#374151", // Dark slate
+//   "#4B5563", // Mid grey
+//   "#6B7280", // Cool grey
+//   "#9CA3AF", // Light grey
+//   "#D1D5DB", // Very light divider grey
+// ];
+
 const COLORS = [
-  "#667eea",
-  "#764ba2",
-  "#f093fb",
-  "#4facfe",
-  "#00f2fe",
-  "#43e97b",
+  "#f5d389",
+  "#fcf1e8",
+  "#c88d37",
+  "#a34f2b",
+  "#7a3f30",
+  "#4c2d23",
 ];
 
 export default function DashboardPage() {
@@ -93,9 +103,16 @@ export default function DashboardPage() {
   return (
     <ProtectedRoute>
       <Navbar />
-      <Container maxWidth="xl" className="py-8">
+      <Container maxWidth="xl" sx={{ py: 2 }}>
         {/* Header */}
-        <Box className="flex justify-between items-center mb-6">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 2,
+          }}
+        >
           <Typography variant="h4" className="font-bold">
             Dashboard
           </Typography>
@@ -116,7 +133,7 @@ export default function DashboardPage() {
         )}
 
         {/* Stats Cards */}
-        <Grid container spacing={3} className="mb-6">
+        <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <Card className="h-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white">
               <CardContent>
@@ -192,7 +209,7 @@ export default function DashboardPage() {
 
         <Grid container spacing={3}>
           {/* Category Chart */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} mt={2}>
             <Card className="h-full">
               <CardContent>
                 <Typography variant="h6" className="font-semibold mb-4">
@@ -234,7 +251,7 @@ export default function DashboardPage() {
           </Grid>
 
           {/* Upcoming Renewals */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} mt={2}>
             <Card className="h-full">
               <CardContent>
                 <Typography variant="h6" className="font-semibold mb-4">
@@ -298,7 +315,14 @@ export default function DashboardPage() {
                       <Grid item xs={12} sm={6} md={4} key={sub._id}>
                         <Card
                           variant="outlined"
-                          className="hover:shadow-md transition-shadow"
+                          sx={{
+                            bgcolor: "#333333",
+                            color: "white",
+                            "&:hover": {
+                              boxShadow: 6,
+                            },
+                          }}
+                          className="transition-shadow"
                         >
                           <CardContent>
                             <Typography

@@ -63,7 +63,13 @@ export default function Navbar() {
             href="/dashboard"
             className="font-bold text-white no-underline flex items-center gap-2"
           >
-            💳 SubTracker
+            <Box
+              component="img"
+              src="/logo2.png"
+              alt="SubTracker logo"
+              sx={{ width: 40, height: 40, borderRadius: "999px" }}
+            />
+            SubTracker
           </Typography>
 
           {/* Navigation Links */}
