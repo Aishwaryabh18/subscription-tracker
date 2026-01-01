@@ -93,7 +93,14 @@ export default function DashboardPage() {
     return (
       <ProtectedRoute>
         <Navbar />
-        <Box className="min-h-screen flex items-center justify-center">
+        <Box
+          sx={{
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <CircularProgress />
         </Box>
       </ProtectedRoute>
@@ -113,21 +120,26 @@ export default function DashboardPage() {
             mb: 2,
           }}
         >
-          <Typography variant="h4" className="font-bold">
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
             Dashboard
           </Typography>
           <Button
             variant="contained"
             startIcon={<AddIcon />}
             onClick={() => router.push("/subscriptions/add")}
-            className="bg-gradient-to-r from-purple-500 to-indigo-500"
+            sx={{
+              background: "linear-gradient(to right, #a855f7, #6366f1)",
+              "&:hover": {
+                background: "linear-gradient(to right, #9333ea, #4f46e5)",
+              },
+            }}
           >
             Add Subscription
           </Button>
         </Box>
 
         {error && (
-          <Alert severity="error" className="mb-4">
+          <Alert severity="error" sx={{ mb: 2 }}>
             {error}
           </Alert>
         )}
@@ -135,72 +147,124 @@ export default function DashboardPage() {
         {/* Stats Cards */}
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <Card className="h-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white">
+            <Card
+              sx={{
+                height: "100%",
+                background:
+                  "linear-gradient(to bottom right, #a855f7, #4f46e5)",
+                color: "white",
+              }}
+            >
               <CardContent>
-                <Box className="flex items-center justify-between">
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Box>
-                    <Typography variant="body2" className="opacity-90">
+                    <Typography variant="body2" sx={{ opacity: 0.9 }}>
                       Total Subscriptions
                     </Typography>
-                    <Typography variant="h4" className="font-bold mt-2">
+                    <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1 }}>
                       {stats?.totalSubscriptions || 0}
                     </Typography>
                   </Box>
-                  <ReceiptIcon className="text-5xl opacity-80" />
+                  <ReceiptIcon sx={{ fontSize: "3rem", opacity: 0.8 }} />
                 </Box>
               </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card className="h-full bg-gradient-to-br from-pink-500 to-rose-600 text-white">
+            <Card
+              sx={{
+                height: "100%",
+                background:
+                  "linear-gradient(to bottom right, #ec4899, #e11d48)",
+                color: "white",
+              }}
+            >
               <CardContent>
-                <Box className="flex items-center justify-between">
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Box>
-                    <Typography variant="body2" className="opacity-90">
+                    <Typography variant="body2" sx={{ opacity: 0.9 }}>
                       Monthly Total
                     </Typography>
-                    <Typography variant="h4" className="font-bold mt-2">
+                    <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1 }}>
                       ₹{stats?.totalMonthly || "0.00"}
                     </Typography>
                   </Box>
-                  <MoneyIcon className="text-5xl opacity-80" />
+                  <MoneyIcon sx={{ fontSize: "3rem", opacity: 0.8 }} />
                 </Box>
               </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card className="h-full bg-gradient-to-br from-blue-500 to-cyan-600 text-white">
+            <Card
+              sx={{
+                height: "100%",
+                background:
+                  "linear-gradient(to bottom right, #3b82f6, #06b6d4)",
+                color: "white",
+              }}
+            >
               <CardContent>
-                <Box className="flex items-center justify-between">
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Box>
-                    <Typography variant="body2" className="opacity-90">
+                    <Typography variant="body2" sx={{ opacity: 0.9 }}>
                       Yearly Total
                     </Typography>
-                    <Typography variant="h4" className="font-bold mt-2">
+                    <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1 }}>
                       ₹{stats?.totalYearly || "0.00"}
                     </Typography>
                   </Box>
-                  <TrendingUpIcon className="text-5xl opacity-80" />
+                  <TrendingUpIcon sx={{ fontSize: "3rem", opacity: 0.8 }} />
                 </Box>
               </CardContent>
             </Card>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <Card className="h-full bg-gradient-to-br from-green-500 to-emerald-600 text-white">
+            <Card
+              sx={{
+                height: "100%",
+                background:
+                  "linear-gradient(to bottom right, #22c55e, #10b981)",
+                color: "white",
+              }}
+            >
               <CardContent>
-                <Box className="flex items-center justify-between">
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Box>
-                    <Typography variant="body2" className="opacity-90">
+                    <Typography variant="body2" sx={{ opacity: 0.9 }}>
                       Upcoming Renewals
                     </Typography>
-                    <Typography variant="h4" className="font-bold mt-2">
+                    <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1 }}>
                       {stats?.upcomingRenewals.length || 0}
                     </Typography>
                   </Box>
-                  <CalendarIcon className="text-5xl opacity-80" />
+                  <CalendarIcon sx={{ fontSize: "3rem", opacity: 0.8 }} />
                 </Box>
               </CardContent>
             </Card>
@@ -210,37 +274,52 @@ export default function DashboardPage() {
         <Grid container spacing={3}>
           {/* Category Chart */}
           <Grid item xs={12} md={6} mt={2}>
-            <Card className="h-full">
+            <Card sx={{ height: "100%" }}>
               <CardContent>
-                <Typography variant="h6" className="font-semibold mb-4">
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
                   Spending by Category
                 </Typography>
                 {categoryData.length > 0 ? (
-                  <ResponsiveContainer width="100%" height={300}>
-                    <PieChart>
-                      <Pie
-                        data={categoryData}
-                        cx="50%"
-                        cy="50%"
-                        labelLine={false}
-                        label={(entry) => `₹${entry.value.toFixed(2)}`}
-                        outerRadius={100}
-                        fill="#8884d8"
-                        dataKey="value"
+                  <Box sx={{ width: "100%", height: 350 }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart
+                        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                       >
-                        {categoryData.map((entry, index) => (
-                          <Cell
-                            key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
-                          />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                      <Legend />
-                    </PieChart>
-                  </ResponsiveContainer>
+                        <Pie
+                          data={categoryData}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          label={(entry) => `₹${entry.value.toFixed(2)}`}
+                          outerRadius={100}
+                          fill="#8884d8"
+                          dataKey="value"
+                        >
+                          {categoryData.map((entry, index) => (
+                            <Cell
+                              key={`cell-${index}`}
+                              fill={COLORS[index % COLORS.length]}
+                            />
+                          ))}
+                        </Pie>
+                        <Tooltip />
+                        <Legend
+                          verticalAlign="bottom"
+                          height={36}
+                          wrapperStyle={{ paddingTop: "20px" }}
+                        />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </Box>
                 ) : (
-                  <Box className="flex items-center justify-center h-64">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: 256,
+                    }}
+                  >
                     <Typography color="text.secondary">
                       No data available
                     </Typography>
@@ -252,20 +331,27 @@ export default function DashboardPage() {
 
           {/* Upcoming Renewals */}
           <Grid item xs={12} md={6} mt={2}>
-            <Card className="h-full">
+            <Card sx={{ height: "100%" }}>
               <CardContent>
-                <Typography variant="h6" className="font-semibold mb-4">
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
                   Upcoming Renewals
                 </Typography>
                 {stats && stats.upcomingRenewals.length > 0 ? (
-                  <Box className="space-y-3">
+                  <Box sx={{ "& > *:not(:last-child)": { mb: 1.5 } }}>
                     {stats.upcomingRenewals.map((renewal) => (
                       <Box
                         key={renewal.id}
-                        className="flex justify-between items-center p-3 bg-gray-50 rounded-lg"
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          p: 1,
+                          // bgcolor: "grey.50",
+                          borderRadius: 1,
+                        }}
                       >
                         <Box>
-                          <Typography variant="body1" className="font-medium">
+                          <Typography variant="body1" sx={{ fontWeight: 500 }}>
                             {renewal.name}
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
@@ -284,7 +370,14 @@ export default function DashboardPage() {
                     ))}
                   </Box>
                 ) : (
-                  <Box className="flex items-center justify-center h-64">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: 256,
+                    }}
+                  >
                     <Typography color="text.secondary">
                       No upcoming renewals
                     </Typography>
@@ -298,8 +391,15 @@ export default function DashboardPage() {
           <Grid item xs={12}>
             <Card>
               <CardContent>
-                <Box className="flex justify-between items-center mb-4">
-                  <Typography variant="h6" className="font-semibold">
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    mb: 2,
+                  }}
+                >
+                  <Typography variant="h6" sx={{ fontWeight: 600 }}>
                     Recent Subscriptions
                   </Typography>
                   <Button
@@ -318,31 +418,43 @@ export default function DashboardPage() {
                           sx={{
                             bgcolor: "#333333",
                             color: "white",
+                            transition: "box-shadow 0.3s ease",
                             "&:hover": {
                               boxShadow: 6,
                             },
                           }}
-                          className="transition-shadow"
                         >
                           <CardContent>
                             <Typography
                               variant="h6"
-                              className="font-semibold truncate"
+                              sx={{
+                                fontWeight: 600,
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                              }}
                             >
                               {sub.name}
                             </Typography>
                             <Typography
                               variant="body2"
                               color="text.secondary"
-                              className="mt-1"
+                              sx={{ mt: 0.5 }}
                             >
                               {sub.category}
                             </Typography>
-                            <Box className="flex justify-between items-center mt-3">
+                            <Box
+                              sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                mt: 2,
+                              }}
+                            >
                               <Typography
                                 variant="h6"
                                 color="primary"
-                                className="font-bold"
+                                sx={{ fontWeight: "bold" }}
                               >
                                 ₹{sub.cost}
                               </Typography>
@@ -359,8 +471,16 @@ export default function DashboardPage() {
                     ))}
                   </Grid>
                 ) : (
-                  <Box className="flex flex-col items-center justify-center py-12">
-                    <Typography color="text.secondary" className="mb-4">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      py: 6,
+                    }}
+                  >
+                    <Typography color="text.secondary" sx={{ mb: 2 }}>
                       No subscriptions yet
                     </Typography>
                     <Button

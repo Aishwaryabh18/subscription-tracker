@@ -160,9 +160,9 @@ export default function LoginPage() {
           }}
         >
           {/* Header */}
-          <Box className="text-center mb-6">
+          <Box sx={{ textAlign: "center", mb: 3 }}>
             <LoginIcon sx={{ fontSize: 48, color: "primary.main", mb: 1 }} />
-            <Typography variant="h4" component="h1" className="font-bold mb-2">
+            <Typography variant="h4" component="h1" sx={{ fontWeight: "bold", mb: 1 }}>
               Welcome Back
             </Typography>
             <Typography variant="body1" color="text.secondary">
@@ -170,7 +170,7 @@ export default function LoginPage() {
             </Typography>
           </Box>
 
-          <Divider className="mb-6" />
+          <Divider sx={{ mb: 3 }} />
 
           {/* Form */}
           <Box component="form" onSubmit={handleSubmit} noValidate>
@@ -189,6 +189,7 @@ export default function LoginPage() {
               required
               autoComplete="email"
               autoFocus
+              InputLabelProps={{ shrink: true }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -212,6 +213,7 @@ export default function LoginPage() {
               margin="normal"
               required
               autoComplete="current-password"
+              InputLabelProps={{ shrink: true }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -225,7 +227,7 @@ export default function LoginPage() {
                       edge="end"
                       disabled={loading}
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -254,7 +256,7 @@ export default function LoginPage() {
             </Button>
 
             {/* Sign Up Link */}
-            <Box className="text-center mt-4">
+            <Box sx={{ textAlign: "center", mt: 2 }}>
               <Typography variant="body2" color="text.secondary">
                 Don't have an account?{" "}
                 <MuiLink
@@ -274,21 +276,6 @@ export default function LoginPage() {
               </Typography>
             </Box>
           </Box>
-        </Paper>
-
-        {/* Demo Credentials (Remove in production) */}
-        <Paper
-          elevation={2}
-          sx={{
-            p: 2,
-            mt: 2,
-            bgcolor: "info.light",
-            color: "info.contrastText",
-          }}
-        >
-          <Typography variant="caption" className="block">
-            <strong>Demo Account:</strong> demo@example.com / demo123456
-          </Typography>
         </Paper>
       </Container>
     </Box>

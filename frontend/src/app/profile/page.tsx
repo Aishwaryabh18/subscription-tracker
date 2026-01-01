@@ -300,33 +300,33 @@ export default function ProfilePage() {
   return (
     <ProtectedRoute>
       <Navbar />
-      <Container maxWidth="lg" className="py-8">
+      <Container maxWidth="lg" sx={{ py: 2 }}>
         {/* Header */}
-        <Typography variant="h4" className="font-bold mb-6">
+        {/* <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
           Profile Settings
-        </Typography>
+        </Typography> */}
 
         <Grid container spacing={4}>
           {/* Profile Card */}
           <Grid item xs={12} md={4}>
-            <Paper elevation={3} className="p-6 text-center">
+            <Paper elevation={3} sx={{ p: 2, textAlign: "center" }}>
               <Avatar
-                className="w-24 h-24 mx-auto mb-4 text-4xl"
                 sx={{
+                  width: 96,
+                  height: 96,
+                  mx: "auto",
+                  mb: 2,
+                  fontSize: "2.25rem",
                   background:
                     "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                 }}
               >
                 {user.name.charAt(0).toUpperCase()}
               </Avatar>
-              <Typography variant="h5" className="font-semibold mb-1">
+              <Typography variant="h5" sx={{ fontWeight: 600, mb: 0.5 }}>
                 {user.name}
               </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                className="mb-4"
-              >
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                 {user.email}
               </Typography>
               <Typography variant="caption" color="text.secondary">
@@ -341,16 +341,18 @@ export default function ProfilePage() {
 
           <Grid item xs={12} md={8}>
             {/* Profile Information */}
-            <Card className="mb-4">
-              <CardContent className="p-6">
-                <Box className="flex items-center gap-2 mb-4">
+            <Card sx={{ mb: 2 }}>
+              <CardContent sx={{ p: 2 }}>
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: 2, mb: 1 }}
+                >
                   <PersonIcon color="primary" />
-                  <Typography variant="h6" className="font-semibold">
+                  <Typography variant="h6" sx={{ fontWeight: 600 }}>
                     Personal Information
                   </Typography>
                 </Box>
 
-                <Divider className="mb-4" />
+                <Divider sx={{ mb: 2 }} />
 
                 <Box component="form" onSubmit={handleProfileSubmit}>
                   <Grid container spacing={3}>
@@ -502,17 +504,26 @@ export default function ProfilePage() {
 
             {/* Change Password */}
             <Card>
-              <CardContent className="p-6">
-                <Box className="flex items-center gap-2 mb-4">
+              <CardContent sx={{ p: 2 }}>
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}
+                >
                   <LockIcon color="secondary" />
-                  <Typography variant="h6" className="font-semibold">
+                  <Typography variant="h6" sx={{ fontWeight: 600 }}>
                     Change Password
                   </Typography>
                 </Box>
 
-                <Divider className="mb-4" />
+                <Divider />
 
-                <Alert severity="info" className="mb-4">
+                <Alert
+                  severity="info"
+                  sx={{
+                    mb: 2,
+                    backgroundColor: "transparent",
+                    color: "#CBD5E1",
+                  }}
+                >
                   For security, you'll be logged out after changing your
                   password.
                 </Alert>
@@ -548,9 +559,9 @@ export default function ProfilePage() {
                                 disabled={loadingPassword}
                               >
                                 {showCurrentPassword ? (
-                                  <VisibilityOff />
-                                ) : (
                                   <Visibility />
+                                ) : (
+                                  <VisibilityOff />
                                 )}
                               </IconButton>
                             </InputAdornment>
@@ -591,9 +602,9 @@ export default function ProfilePage() {
                                 disabled={loadingPassword}
                               >
                                 {showNewPassword ? (
-                                  <VisibilityOff />
-                                ) : (
                                   <Visibility />
+                                ) : (
+                                  <VisibilityOff />
                                 )}
                               </IconButton>
                             </InputAdornment>
@@ -636,9 +647,9 @@ export default function ProfilePage() {
                                   disabled={loadingPassword}
                                 >
                                   {showConfirmPassword ? (
-                                    <VisibilityOff />
-                                  ) : (
                                     <Visibility />
+                                  ) : (
+                                    <VisibilityOff />
                                   )}
                                 </IconButton>
                               )}

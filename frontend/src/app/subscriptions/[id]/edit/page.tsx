@@ -138,7 +138,7 @@ export default function EditSubscriptionPage() {
     return (
       <ProtectedRoute>
         <Navbar />
-        <Box className="min-h-screen flex items-center justify-center">
+        <Box sx={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <CircularProgress />
         </Box>
       </ProtectedRoute>
@@ -149,9 +149,9 @@ export default function EditSubscriptionPage() {
     return (
       <ProtectedRoute>
         <Navbar />
-        <Container maxWidth="md" className="py-8">
+        <Container maxWidth="md" sx={{ py: 4 }}>
           <Alert severity="error">{error}</Alert>
-          <Button onClick={() => router.back()} className="mt-4">
+          <Button onClick={() => router.back()} sx={{ mt: 2 }}>
             Go Back
           </Button>
         </Container>
@@ -162,18 +162,18 @@ export default function EditSubscriptionPage() {
   return (
     <ProtectedRoute>
       <Navbar />
-      <Container maxWidth="md" className="py-8">
-        <Box className="flex items-center gap-4 mb-6">
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 3 }}>
           <Button startIcon={<ArrowBackIcon />} onClick={() => router.back()}>
             Back
           </Button>
-          <Typography variant="h4" className="font-bold">
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
             Edit Subscription
           </Typography>
         </Box>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent sx={{ p: 3 }}>
             <Box component="form" onSubmit={handleSubmit} noValidate>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -371,7 +371,7 @@ export default function EditSubscriptionPage() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Box className="flex gap-3 justify-end">
+                  <Box sx={{ display: "flex", gap: 2, justifyContent: "flex-end" }}>
                     <Button
                       variant="outlined"
                       onClick={() => router.back()}
@@ -384,7 +384,12 @@ export default function EditSubscriptionPage() {
                       variant="contained"
                       startIcon={<SaveIcon />}
                       disabled={saving}
-                      className="bg-gradient-to-r from-purple-500 to-indigo-500"
+                      sx={{
+                        background: "linear-gradient(to right, #a855f7, #6366f1)",
+                        "&:hover": {
+                          background: "linear-gradient(to right, #9333ea, #4f46e5)",
+                        },
+                      }}
                     >
                       {saving ? "Saving..." : "Save Changes"}
                     </Button>

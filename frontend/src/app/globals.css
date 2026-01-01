@@ -165,47 +165,53 @@ a {
   border-color: rgba(55, 65, 81, 0.9);
 }
 
-/* Inputs */
+/* Inputs (avoid overriding MUI by skipping .MuiInputBase-input) */
 .input,
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-select,
-textarea {
+input:not(.MuiInputBase-input),
+select:not(.MuiInputBase-input),
+textarea:not(.MuiInputBase-input) {
   width: 100%;
   padding: 0.65rem 0.9rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border-subtle);
-  background-color: rgba(15, 23, 42, 0.9);
-  color: var(--color-text-main);
+  background-color: transparent;
+  color: inherit;
   font-size: 0.95rem;
   outline: none;
   transition:
     border-color var(--transition-fast),
-    box-shadow var(--transition-fast),
-    background-color var(--transition-fast);
+    box-shadow var(--transition-fast);
 }
 
 .input::placeholder,
-input::placeholder,
-textarea::placeholder {
+input:not(.MuiInputBase-input)::placeholder,
+textarea:not(.MuiInputBase-input)::placeholder {
   color: var(--color-text-muted);
 }
 
 .input:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px rgba(245, 110, 15, 0.5);
-  background-color: rgba(15, 23, 42, 1);
+input:not(.MuiInputBase-input):focus,
+select:not(.MuiInputBase-input):focus,
+textarea:not(.MuiInputBase-input):focus {
+  border-color: var(--color-border-subtle);
+  box-shadow: none;
 }
 
 .input-error,
-input.input-error,
-textarea.input-error {
+input.input-error:not(.MuiInputBase-input),
+textarea.input-error:not(.MuiInputBase-input) {
   border-color: #ef4444;
+}
+
+/* Autofill override to prevent white/yellow background */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill,
+.MuiInputBase-input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  caret-color: inherit;
+  transition: background-color 9999s ease-in-out 0s;
 }
 
 /* Links */

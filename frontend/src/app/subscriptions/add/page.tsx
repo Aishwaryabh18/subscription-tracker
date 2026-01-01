@@ -59,7 +59,7 @@ export default function AddSubscriptionPage() {
     name: "",
     description: "",
     cost: 0,
-  currency: "INR",
+    currency: "INR",
     billingCycle: "monthly",
     nextBillingDate: "",
     category: "Entertainment",
@@ -120,18 +120,18 @@ export default function AddSubscriptionPage() {
   return (
     <ProtectedRoute>
       <Navbar />
-      <Container maxWidth="md" className="py-8">
-        <Box className="flex items-center gap-4 mb-6">
+      <Container maxWidth="md" sx={{ py: 4 }}>
+        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
           <Button startIcon={<ArrowBackIcon />} onClick={() => router.back()}>
             Back
           </Button>
-          <Typography variant="h4" className="font-bold">
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
             Add New Subscription
           </Typography>
         </Box>
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent sx={{ p: 3 }}>
             <Box component="form" onSubmit={handleSubmit} noValidate>
               <Grid container spacing={3}>
                 {/* Name */}
@@ -329,7 +329,9 @@ export default function AddSubscriptionPage() {
 
                 {/* Submit Button */}
                 <Grid item xs={12}>
-                  <Box className="flex gap-3 justify-end">
+                  <Box
+                    sx={{ display: "flex", gap: 2, justifyContent: "flex-end" }}
+                  >
                     <Button
                       variant="outlined"
                       onClick={() => router.back()}
@@ -342,7 +344,14 @@ export default function AddSubscriptionPage() {
                       variant="contained"
                       startIcon={<SaveIcon />}
                       disabled={loading}
-                      className="bg-gradient-to-r from-purple-500 to-indigo-500"
+                      sx={{
+                        background:
+                          "linear-gradient(to right, #a855f7, #6366f1)",
+                        "&:hover": {
+                          background:
+                            "linear-gradient(to right, #9333ea, #4f46e5)",
+                        },
+                      }}
                     >
                       {loading ? "Saving..." : "Save Subscription"}
                     </Button>

@@ -218,11 +218,11 @@ export default function SignupPage() {
           }}
         >
           {/* Header */}
-          <Box className="text-center mb-6">
+          <Box sx={{ textAlign: "center", mb: 3 }}>
             <PersonAddIcon
               sx={{ fontSize: 48, color: "primary.main", mb: 1 }}
             />
-            <Typography variant="h4" component="h1" className="font-bold mb-2">
+            <Typography variant="h4" component="h1" sx={{ fontWeight: "bold", mb: 1 }}>
               Create Account
             </Typography>
             <Typography variant="body1" color="text.secondary">
@@ -230,7 +230,7 @@ export default function SignupPage() {
             </Typography>
           </Box>
 
-          <Divider className="mb-6" />
+          <Divider sx={{ mb: 3 }} />
 
           {/* Form */}
           <Box component="form" onSubmit={handleSubmit} noValidate>
@@ -309,7 +309,7 @@ export default function SignupPage() {
                       edge="end"
                       disabled={loading}
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -318,14 +318,14 @@ export default function SignupPage() {
 
             {/* Password Strength Indicator */}
             {formData.password && (
-              <Box className="mt-2 mb-3">
-                <Box className="flex justify-between items-center mb-1">
+              <Box sx={{ mt: 1, mb: 2 }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 0.5 }}>
                   <Typography variant="caption" color="text.secondary">
                     Password Strength
                   </Typography>
                   <Typography
                     variant="caption"
-                    className="font-semibold"
+                    sx={{ fontWeight: 600 }}
                     color={getPasswordStrengthColor()}
                   >
                     {passwordStrength < 50
@@ -376,9 +376,9 @@ export default function SignupPage() {
                         disabled={loading}
                       >
                         {showConfirmPassword ? (
-                          <VisibilityOff />
-                        ) : (
                           <Visibility />
+                        ) : (
+                          <VisibilityOff />
                         )}
                       </IconButton>
                     )}
@@ -412,14 +412,14 @@ export default function SignupPage() {
             <Typography
               variant="caption"
               color="text.secondary"
-              className="block text-center mb-4"
+              sx={{ display: "block", textAlign: "center", mb: 2 }}
             >
               By signing up, you agree to our Terms of Service and Privacy
               Policy
             </Typography>
 
             {/* Login Link */}
-            <Box className="text-center">
+            <Box sx={{ textAlign: "center" }}>
               <Typography variant="body2" color="text.secondary">
                 Already have an account?{" "}
                 <MuiLink

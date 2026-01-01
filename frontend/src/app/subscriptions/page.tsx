@@ -136,7 +136,7 @@ export default function SubscriptionsPage() {
     return (
       <ProtectedRoute>
         <Navbar />
-        <Box className="min-h-screen flex items-center justify-center">
+        <Box sx={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <CircularProgress />
         </Box>
       </ProtectedRoute>
@@ -146,32 +146,37 @@ export default function SubscriptionsPage() {
   return (
     <ProtectedRoute>
       <Navbar />
-      <Container maxWidth="xl" className="py-8">
+      <Container maxWidth="xl" sx={{ py: 4 }}>
         {/* Header */}
-        <Box className="flex justify-between items-center mb-6">
-          <Typography variant="h4" className="font-bold">
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
             My Subscriptions
           </Typography>
           <Button
             variant="contained"
             startIcon={<AddIcon />}
             onClick={() => router.push("/subscriptions/add")}
-            className="bg-gradient-to-r from-purple-500 to-indigo-500"
+            sx={{
+              background: "linear-gradient(to right, #a855f7, #6366f1)",
+              "&:hover": {
+                background: "linear-gradient(to right, #9333ea, #4f46e5)",
+              },
+            }}
           >
             Add Subscription
           </Button>
         </Box>
 
         {error && (
-          <Alert severity="error" className="mb-4">
+          <Alert severity="error" sx={{ mb: 2 }}>
             {error}
           </Alert>
         )}
 
         {/* Filters */}
-        <Card className="mb-6">
+        <Card sx={{ mb: 3 }}>
           <CardContent>
-            <Box className="flex items-center gap-2 mb-4">
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
               <FilterIcon />
               <Typography variant="h6">Filters</Typography>
             </Box>
@@ -232,12 +237,29 @@ export default function SubscriptionsPage() {
           <Grid container spacing={3}>
             {filteredSubs.map((sub) => (
               <Grid item xs={12} sm={6} md={4} key={sub._id}>
-                <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
-                  <CardContent className="flex-grow">
-                    <Box className="flex justify-between items-start mb-3">
+                <Card 
+                  sx={{ 
+                    height: "100%", 
+                    display: "flex", 
+                    flexDirection: "column",
+                    transition: "box-shadow 0.3s ease",
+                    "&:hover": {
+                      boxShadow: 6,
+                    },
+                  }}
+                >
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 2 }}>
                       <Typography
                         variant="h6"
-                        className="font-semibold truncate flex-1"
+                        sx={{ 
+                          fontWeight: 600, 
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
+                          flex: 1,
+                          mr: 1,
+                        }}
                       >
                         {sub.name}
                       </Typography>
@@ -252,27 +274,33 @@ export default function SubscriptionsPage() {
                       <Typography
                         variant="body2"
                         color="text.secondary"
-                        className="mb-3 line-clamp-2"
+                        sx={{ 
+                          mb: 2,
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                        }}
                       >
                         {sub.description}
                       </Typography>
                     )}
 
-                    <Box className="space-y-2">
-                      <Box className="flex justify-between items-center">
+                    <Box sx={{ "& > *:not(:last-child)": { mb: 1 } }}>
+                      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <Typography variant="body2" color="text.secondary">
                           Cost
                         </Typography>
                         <Typography
                           variant="h6"
                           color="primary"
-                          className="font-bold"
+                          sx={{ fontWeight: "bold" }}
                         >
                           ₹{sub.cost}
                         </Typography>
                       </Box>
 
-                      <Box className="flex justify-between items-center">
+                      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <Typography variant="body2" color="text.secondary">
                           Billing
                         </Typography>
@@ -283,14 +311,14 @@ export default function SubscriptionsPage() {
                         />
                       </Box>
 
-                      <Box className="flex justify-between items-center">
+                      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <Typography variant="body2" color="text.secondary">
                           Category
                         </Typography>
                         <Typography variant="body2">{sub.category}</Typography>
                       </Box>
 
-                      <Box className="flex justify-between items-center">
+                      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <Typography variant="body2" color="text.secondary">
                           Next Billing
                         </Typography>
@@ -301,7 +329,7 @@ export default function SubscriptionsPage() {
                     </Box>
                   </CardContent>
 
-                  <CardActions className="justify-between px-4 pb-4">
+                  <CardActions sx={{ justifyContent: "space-between", px: 2, pb: 2 }}>
                     <Button
                       size="small"
                       startIcon={<EditIcon />}
@@ -332,11 +360,11 @@ export default function SubscriptionsPage() {
         ) : (
           <Card>
             <CardContent>
-              <Box className="flex flex-col items-center justify-center py-12">
+              <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", py: 6 }}>
                 <Typography
                   variant="h6"
                   color="text.secondary"
-                  className="mb-4"
+                  sx={{ mb: 2 }}
                 >
                   {subscriptions.length === 0
                     ? "No subscriptions yet"

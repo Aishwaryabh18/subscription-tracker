@@ -31,21 +31,35 @@ export default function RootLayout({ children }: RootLayoutProps) {
               toastOptions={{
                 duration: 3000,
                 style: {
-                  background: "var(--panel-bg)",
-                  color: "var(--text)",
+                  background: "#262626", // Match MUI theme background.paper
+                  color: "#f8fafc", // Match MUI theme text.primary
+                  border: "1px solid #374151", // Subtle border
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                  padding: "12px 16px",
                 },
                 success: {
                   duration: 3000,
+                  style: {
+                    background: "#262626",
+                    color: "#f8fafc",
+                    border: "1px solid #22c55e",
+                  },
                   iconTheme: {
-                    primary: "var(--orange-500)",
-                    secondary: "var(--grey-900)",
+                    primary: "#22c55e", // success color from theme
+                    secondary: "#262626",
                   },
                 },
                 error: {
                   duration: 4000,
+                  style: {
+                    background: "#262626",
+                    color: "#f8fafc",
+                    border: "1px solid #ef4444",
+                  },
                   iconTheme: {
-                    primary: "var(--danger)",
-                    secondary: "var(--grey-900)",
+                    primary: "#ef4444", // error color from theme
+                    secondary: "#262626",
                   },
                 },
               }}
