@@ -61,6 +61,7 @@ export default function AddSubscriptionPage() {
     cost: 0,
     currency: "INR",
     billingCycle: "monthly",
+    startDate: "",
     nextBillingDate: "",
     category: "Entertainment",
     paymentMethod: "Credit Card",
@@ -80,6 +81,10 @@ export default function AddSubscriptionPage() {
 
     if (!formData.cost || formData.cost <= 0) {
       newErrors.cost = "Cost must be greater than 0";
+    }
+
+    if (!formData.startDate) {
+      newErrors.startDate = "Start date is required";
     }
 
     if (!formData.nextBillingDate) {
@@ -197,7 +202,7 @@ export default function AddSubscriptionPage() {
                 </Grid>
 
                 {/* Billing Cycle */}
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                   <TextField
                     fullWidth
                     select
@@ -215,8 +220,23 @@ export default function AddSubscriptionPage() {
                   </TextField>
                 </Grid>
 
+                <Grid item xs={12} sm={4}>
+                  <TextField
+                    fullWidth
+                    label="Start Date"
+                    name="startDate"
+                    type="date"
+                    value={formData.startDate}
+                    onChange={handleChange}
+                    error={!!errors.startDate}
+                    helperText={errors.startDate}
+                    required
+                    InputLabelProps={{ shrink: true }}
+                  />
+                </Grid>
+
                 {/* Next Billing Date */}
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                   <TextField
                     fullWidth
                     label="Next Billing Date"
