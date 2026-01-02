@@ -213,10 +213,17 @@ const updateSubscription = async (req, res) => {
     // { runValidators: true } runs schema validations on update
     const updateData = { ...req.body, currency: "INR" };
 
-    subscription = await Subscription.findByIdAndUpdate(req.params.id, updateData, {
-      new: true,
-      runValidators: true,
-    });
+    // If website is an empty string, treat it as omitted so we don't overwrite existing value
+    if (updateData.website === "") delete updateData.website;
+
+    subscription = await Subscription.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     res.status(200).json({
       success: true,

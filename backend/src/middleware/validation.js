@@ -125,7 +125,7 @@ const validateSubscription = [
     .withMessage("Notes cannot exceed 1000 characters"),
 
   body("website")
-    .optional()
+    .optional({ checkFalsy: true })
     .trim()
     .isURL() // Must be valid URL
     .withMessage("Invalid URL format"),

@@ -3,7 +3,7 @@
 require("dotenv").config(); // Load env
 const app = require("./src/app");
 const connectDB = require("./src/config/db");
-import { startReminderCron } from "./utils/reminderCron";
+const startReminderCron = require("./src/utils/reminderCron");
 
 const PORT = process.env.PORT || 5000;
 

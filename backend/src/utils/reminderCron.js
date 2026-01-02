@@ -2,7 +2,7 @@ const cron = require("node-cron");
 const Subscription = require("../models/Subscription");
 const { sendReminderEmail } = require("./emailService");
 
-const startReminderCron = () => {
+module.exports = function startReminderCron() {
   // Run every day at 9 AM
   cron.schedule("0 9 * * *", async () => {
     console.log("[CRON] Running subscription reminder job");
@@ -28,4 +28,4 @@ const startReminderCron = () => {
   });
 };
 
-module.exports = { startReminderCron };
+// module.exports = startReminderCron;
