@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 
 // Import routes
 const authRoutes = require("./routes/authRoutes");
@@ -10,6 +12,21 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Security headers
+app.use(helmet());
+
+// Rate limiter for auth endpoints (protect against brute force)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // limit each IP to 10 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many requests from this IP, please try again later",
+  },
+});
 
 // CORS
 app.use(
@@ -33,7 +50,7 @@ app.use(
 // });
 
 // Mount other routes
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
 
 // 404 handler

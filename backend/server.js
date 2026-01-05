@@ -1,6 +1,16 @@
 // Main entry point - starts the server
 
 require("dotenv").config(); // Load env
+
+const { validateEnv } = require("./src/config/validateEnv");
+
+try {
+  validateEnv();
+} catch (err) {
+  console.error(err.message);
+  process.exit(1);
+}
+
 const app = require("./src/app");
 const connectDB = require("./src/config/db");
 const startReminderCron = require("./src/utils/reminderCron");
