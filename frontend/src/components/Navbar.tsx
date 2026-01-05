@@ -61,7 +61,14 @@ export default function Navbar() {
             variant="h6"
             component={Link}
             href="/dashboard"
-            className="font-bold text-white no-underline flex items-center gap-2"
+            // className="font-bold text-white no-underline flex items-center gap-2"
+            sx={{
+              fontWeight: "bold",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              gap: 2,
+            }}
           >
             <Box
               component="img"
