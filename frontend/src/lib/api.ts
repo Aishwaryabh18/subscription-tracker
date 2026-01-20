@@ -106,7 +106,7 @@ api.interceptors.response.use(
 export const register = async (
   userData: RegisterFormData
 ): Promise<AuthResponse> => {
-  const response = await api.post<AuthResponse>("/auth/register", userData);
+  const response = await api.post<AuthResponse>("/api/auth/register", userData);
   return response.data;
 };
 
@@ -118,7 +118,7 @@ export const register = async (
 export const login = async (
   credentials: LoginFormData
 ): Promise<AuthResponse> => {
-  const response = await api.post<AuthResponse>("/auth/login", credentials);
+  const response = await api.post<AuthResponse>("/api/auth/login", credentials);
   return response.data;
 };
 
@@ -127,7 +127,7 @@ export const login = async (
  * @returns Promise with user data
  */
 export const getCurrentUser = async (): Promise<UserResponse> => {
-  const response = await api.get<UserResponse>("/auth/me");
+  const response = await api.get<UserResponse>("/api/auth/me");
   return response.data;
 };
 
@@ -147,7 +147,7 @@ export const updateProfile = async (
     };
   }>
 ): Promise<UserResponse> => {
-  const response = await api.put<UserResponse>("/auth/update", userData);
+  const response = await api.put<UserResponse>("/api/auth/update", userData);
   return response.data;
 };
 
