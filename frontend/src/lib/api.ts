@@ -179,7 +179,7 @@ export const changePassword = async (passwords: {
 export const getAllSubscriptions = async (
   params: SubscriptionQueryParams = {}
 ): Promise<SubscriptionsResponse> => {
-  const response = await api.get<SubscriptionsResponse>("/subscriptions", {
+  const response = await api.get<SubscriptionsResponse>("/api/subscriptions", {
     params,
   });
   return response.data;
@@ -193,7 +193,9 @@ export const getAllSubscriptions = async (
 export const getSubscriptionById = async (
   id: string
 ): Promise<SubscriptionResponse> => {
-  const response = await api.get<SubscriptionResponse>(`/subscriptions/${id}`);
+  const response = await api.get<SubscriptionResponse>(
+    `/api/subscriptions/${id}`
+  );
   return response.data;
 };
 
@@ -206,7 +208,7 @@ export const createSubscription = async (
   subscriptionData: SubscriptionFormData
 ): Promise<SubscriptionResponse> => {
   const response = await api.post<SubscriptionResponse>(
-    "/subscriptions",
+    "/api/subscriptions",
     subscriptionData
   );
   return response.data;
@@ -223,7 +225,7 @@ export const updateSubscription = async (
   subscriptionData: Partial<SubscriptionFormData>
 ): Promise<SubscriptionResponse> => {
   const response = await api.put<SubscriptionResponse>(
-    `/subscriptions/${id}`,
+    `/api/subscriptions/${id}`,
     subscriptionData
   );
   return response.data;
@@ -237,7 +239,7 @@ export const updateSubscription = async (
 export const deleteSubscription = async (
   id: string
 ): Promise<{ success: boolean; message: string; id: string }> => {
-  const response = await api.delete(`/subscriptions/${id}`);
+  const response = await api.delete(`/api/subscriptions/${id}`);
   return response.data;
 };
 
@@ -246,7 +248,9 @@ export const deleteSubscription = async (
  * @returns Promise with stats data
  */
 export const getSubscriptionStats = async (): Promise<StatsResponse> => {
-  const response = await api.get<StatsResponse>("/subscriptions/stats/summary");
+  const response = await api.get<StatsResponse>(
+    "/api/subscriptions/stats/summary"
+  );
   return response.data;
 };
 
