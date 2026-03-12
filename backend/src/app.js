@@ -43,16 +43,10 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow Postman / server requests
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [
+      "http://localhost:3000",
+      "https://subscription-tracker-orpin.vercel.app",
+    ],
     credentials: true,
   })
 );
