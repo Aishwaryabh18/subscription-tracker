@@ -82,7 +82,16 @@ const theme = createTheme({
         },
       },
     },
+  MuiCssBaseline: {
+    styleOverrides: {
+      'input:-webkit-autofill': {
+        WebkitTextFillColor: '#fff',
+        caretColor: '#fff',
+        transition: 'background-color 5000s ease-in-out 0s',
+      },
+    },
   },
+}
 });
 
 export default theme;
